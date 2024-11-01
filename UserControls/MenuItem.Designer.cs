@@ -43,10 +43,10 @@
             // 
             this.lblMenuName.AutoSize = true;
             this.lblMenuName.BackColor = System.Drawing.Color.Transparent;
-            this.lblMenuName.Font = new System.Drawing.Font("Pretendard Variable", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMenuName.Location = new System.Drawing.Point(43, 50);
+            this.lblMenuName.Font = new System.Drawing.Font("Pretendard Variable", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenuName.Location = new System.Drawing.Point(133, 51);
             this.lblMenuName.Name = "lblMenuName";
-            this.lblMenuName.Size = new System.Drawing.Size(79, 23);
+            this.lblMenuName.Size = new System.Drawing.Size(69, 19);
             this.lblMenuName.TabIndex = 0;
             this.lblMenuName.Text = "음료 이름";
             this.lblMenuName.Click += new System.EventHandler(this.MenuItem_Click);
@@ -56,7 +56,7 @@
             this.lblMenuPrice.AutoSize = true;
             this.lblMenuPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblMenuPrice.Font = new System.Drawing.Font("Pretendard Variable", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMenuPrice.Location = new System.Drawing.Point(43, 73);
+            this.lblMenuPrice.Location = new System.Drawing.Point(133, 75);
             this.lblMenuPrice.Name = "lblMenuPrice";
             this.lblMenuPrice.Size = new System.Drawing.Size(79, 23);
             this.lblMenuPrice.TabIndex = 1;
@@ -66,17 +66,19 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.Pic_drink);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(182, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(118, 200);
+            this.panel1.Padding = new System.Windows.Forms.Padding(40, 20, 0, 20);
+            this.panel1.Size = new System.Drawing.Size(130, 180);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Pic_drink
             // 
-            this.Pic_drink.Location = new System.Drawing.Point(10, 50);
+            this.Pic_drink.Location = new System.Drawing.Point(14, 30);
             this.Pic_drink.Name = "Pic_drink";
-            this.Pic_drink.Size = new System.Drawing.Size(100, 100);
+            this.Pic_drink.Size = new System.Drawing.Size(120, 120);
             this.Pic_drink.TabIndex = 0;
             this.Pic_drink.TabStop = false;
             this.Pic_drink.Click += new System.EventHandler(this.MenuItem_Click);
@@ -84,18 +86,19 @@
             // panel_type
             // 
             this.panel_type.Controls.Add(this.lbl_types);
-            this.panel_type.Location = new System.Drawing.Point(47, 118);
+            this.panel_type.Location = new System.Drawing.Point(133, 103);
             this.panel_type.Name = "panel_type";
+            this.panel_type.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel_type.Size = new System.Drawing.Size(139, 32);
             this.panel_type.TabIndex = 3;
             // 
             // lbl_types
             // 
-            this.lbl_types.AutoSize = true;
+            this.lbl_types.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbl_types.Font = new System.Drawing.Font("Pretendard", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_types.Location = new System.Drawing.Point(3, 0);
             this.lbl_types.Name = "lbl_types";
-            this.lbl_types.Size = new System.Drawing.Size(0, 16);
+            this.lbl_types.Size = new System.Drawing.Size(78, 32);
             this.lbl_types.TabIndex = 0;
             this.lbl_types.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -104,17 +107,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel_type);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblMenuPrice);
             this.Controls.Add(this.lblMenuName);
             this.Name = "MenuItem";
-            this.Size = new System.Drawing.Size(300, 200);
+            this.Size = new System.Drawing.Size(298, 180);
             this.Click += new System.EventHandler(this.MenuItem_Click);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_drink)).EndInit();
             this.panel_type.ResumeLayout(false);
-            this.panel_type.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

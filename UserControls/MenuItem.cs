@@ -57,5 +57,10 @@ namespace POS_build
 
             // List<(string, string)> options = getOptions();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

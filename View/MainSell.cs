@@ -19,9 +19,6 @@ namespace POS_build
 {
     public partial class MainSell : Form
     {
-       
-        //DataTable table = new DataTable();
-
 
         public MainSell()
         {

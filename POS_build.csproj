@@ -98,13 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository\Class1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Repository\DatabaseManager.cs" />
-    <Compile Include="Repository\MenuItemRepository.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Repository\MenuRepository.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -54,7 +54,6 @@ namespace POS_build
                 reader?.Close(); // 리더 닫기
                 cmd?.Dispose();  // 명령 해제
             }
-                
 
             return menu;
         }
