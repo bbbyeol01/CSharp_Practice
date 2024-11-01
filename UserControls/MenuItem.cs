@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using POS_build.Repository;
+using POS_build.View;
 
 namespace POS_build
 {
@@ -31,10 +34,8 @@ namespace POS_build
 
         public Image MenuImage
         {
-
             get => Pic_drink.Image;
             set { Pic_drink.Image = value; }
-            
         }
 
         public void setImageMode(PictureBoxSizeMode mode)
@@ -42,5 +43,19 @@ namespace POS_build
             Pic_drink.SizeMode = mode;
         }
 
+        public string Lbl_types
+        {
+            get => lbl_types.Text;
+            set { lbl_types.Text = value; }
+        }
+
+
+        private void MenuItem_Click(object sender, EventArgs e)
+        {
+            SelectOptionForm selectOption = new SelectOptionForm();
+            selectOption.Show();
+
+            // List<(string, string)> options = getOptions();
+        }
     }
 }

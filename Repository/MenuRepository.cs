@@ -6,46 +6,119 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using POS_build.Repository;
+using System.Xml.Linq;
 
 namespace POS_build
 {
     public partial class MainSell : Form
     {
 
-        readonly string _server = "localhost";
-        readonly int _port = 3308;
-        readonly string _database = "pos_dataset";
-        readonly string _id = "root";
-        readonly string _pw = "abcde12345";
-        string _connetionAddress = "";
-
-       
-
-        private List<(string, string, string)> getMenuByCategory(string category)
+        private List<(string, string, string, List<string>)> getMenuByCategory(string category)
         {
-            List<(string, string, string)> menu = new List<(string, string, string)>();
+            List<(string, string, string, List<string>)> menu = new List<(string, string, string, List<string>)>();
+            List<string> types = new List<string>();
 
-            using (MySqlConnection connection = new MySqlConnection(_connetionAddress))
+            MySqlConnection connection = null;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
             {
-                connection.Open();
-                string query = "SELECT name, price, image FROM menu WHERE category = @category";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                DatabaseManager databaseManager = new DatabaseManager();
+                connection = databaseManager.GetConnection();
+
+                string query = "SELECT idx, name, price, image FROM menu WHERE category = @category";
+                
+                cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@category", category);
 
-                MySqlDataReader reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    int idx = int.Parse(reader["idx"].ToString());
                     string name = reader["name"].ToString();
                     string price = $"{reader["price"].ToString()}원";
                     string image = reader["image"].ToString();
-                    menu.Add((name, price, image));
-                }
 
+                    types = getTypes(idx);
+
+                    menu.Add((name, price, image, types));
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                reader?.Close(); // 리더 닫기
+                cmd?.Dispose();  // 명령 해제
+            }
+                
 
             return menu;
         }
 
+        public List<string> getTypes(int menuIdx)
+        {
+            List<string> types = new List<string>();
+            DatabaseManager databaseManager = new DatabaseManager();
 
+            try
+            {
+                MySqlConnection connection = databaseManager.GetConnection();
+                string query = "SELECT type FROM drink_type WHERE menu_idx = @menu_idx";
+
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@menu_idx", menuIdx);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string type = $"{reader["type"].ToString()}";
+                        types.Add(type);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            types.Sort((a, b) => a.CompareTo(b));
+
+            return types;
+
+        }
+
+        public List<(string, string)> getOptions()
+        {
+            List<(string, string)> options = new List<(string, string)>();
+
+            DatabaseManager databaseManager = new DatabaseManager();
+
+            using (MySqlConnection connection = databaseManager.GetConnection())
+            {
+                string query = "SELECT name, price FROM drink_option";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string name = reader["name"].ToString();
+                        string price = $"{reader["price"].ToString()}원";
+                        options.Add((name, price));
+                    }
+                }
+
+            }
+
+            return options;
+        }
     }
 }

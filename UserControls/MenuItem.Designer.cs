@@ -32,8 +32,11 @@
             this.lblMenuPrice = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Pic_drink = new System.Windows.Forms.PictureBox();
+            this.panel_type = new System.Windows.Forms.Panel();
+            this.lbl_types = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_drink)).BeginInit();
+            this.panel_type.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMenuName
@@ -41,22 +44,24 @@
             this.lblMenuName.AutoSize = true;
             this.lblMenuName.BackColor = System.Drawing.Color.Transparent;
             this.lblMenuName.Font = new System.Drawing.Font("Pretendard Variable", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMenuName.Location = new System.Drawing.Point(39, 29);
+            this.lblMenuName.Location = new System.Drawing.Point(43, 50);
             this.lblMenuName.Name = "lblMenuName";
-            this.lblMenuName.Size = new System.Drawing.Size(58, 23);
+            this.lblMenuName.Size = new System.Drawing.Size(79, 23);
             this.lblMenuName.TabIndex = 0;
-            this.lblMenuName.Text = "label1";
+            this.lblMenuName.Text = "음료 이름";
+            this.lblMenuName.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // lblMenuPrice
             // 
             this.lblMenuPrice.AutoSize = true;
             this.lblMenuPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblMenuPrice.Font = new System.Drawing.Font("Pretendard Variable", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMenuPrice.Location = new System.Drawing.Point(39, 61);
+            this.lblMenuPrice.Location = new System.Drawing.Point(43, 73);
             this.lblMenuPrice.Name = "lblMenuPrice";
-            this.lblMenuPrice.Size = new System.Drawing.Size(58, 23);
+            this.lblMenuPrice.Size = new System.Drawing.Size(79, 23);
             this.lblMenuPrice.TabIndex = 1;
-            this.lblMenuPrice.Text = "label1";
+            this.lblMenuPrice.Text = "9,999원";
+            this.lblMenuPrice.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // panel1
             // 
@@ -64,28 +69,52 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(182, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(118, 120);
+            this.panel1.Size = new System.Drawing.Size(118, 200);
             this.panel1.TabIndex = 2;
             // 
             // Pic_drink
             // 
-            this.Pic_drink.Location = new System.Drawing.Point(0, 0);
+            this.Pic_drink.Location = new System.Drawing.Point(10, 50);
             this.Pic_drink.Name = "Pic_drink";
-            this.Pic_drink.Size = new System.Drawing.Size(118, 120);
+            this.Pic_drink.Size = new System.Drawing.Size(100, 100);
             this.Pic_drink.TabIndex = 0;
             this.Pic_drink.TabStop = false;
+            this.Pic_drink.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // panel_type
+            // 
+            this.panel_type.Controls.Add(this.lbl_types);
+            this.panel_type.Location = new System.Drawing.Point(47, 118);
+            this.panel_type.Name = "panel_type";
+            this.panel_type.Size = new System.Drawing.Size(139, 32);
+            this.panel_type.TabIndex = 3;
+            // 
+            // lbl_types
+            // 
+            this.lbl_types.AutoSize = true;
+            this.lbl_types.Font = new System.Drawing.Font("Pretendard", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_types.Location = new System.Drawing.Point(3, 0);
+            this.lbl_types.Name = "lbl_types";
+            this.lbl_types.Size = new System.Drawing.Size(0, 16);
+            this.lbl_types.TabIndex = 0;
+            this.lbl_types.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MenuItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel_type);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblMenuPrice);
             this.Controls.Add(this.lblMenuName);
             this.Name = "MenuItem";
-            this.Size = new System.Drawing.Size(300, 120);
+            this.Size = new System.Drawing.Size(300, 200);
+            this.Click += new System.EventHandler(this.MenuItem_Click);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_drink)).EndInit();
+            this.panel_type.ResumeLayout(false);
+            this.panel_type.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +126,7 @@
         private System.Windows.Forms.Label lblMenuPrice;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox Pic_drink;
+        private System.Windows.Forms.Panel panel_type;
+        private System.Windows.Forms.Label lbl_types;
     }
 }
